@@ -70,13 +70,7 @@ screen -r (Session ID)
 
 
 Exempel på visad information
-Realtidsdata för pendeltåg från:
-
-Sundbybergs Station
-
-Tvärbanan – Solna Business Park
-
-Tåg mot: Kallhäll, Bålsta, Nynäshamn, Västerhaninge
+Realtidsdata för pendeltåg och Tvärbana från: Sundbybergs Station och Solna Business Park.
 
 Datum och klockslag visas i realtid
 
