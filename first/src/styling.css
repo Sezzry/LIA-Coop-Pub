@@ -1,0 +1,121 @@
+/* General page layout */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns them to the top */
+    gap: 20px;
+    background-image: url('./images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+/* Data section layout */
+.data-container {
+  display: flex;
+  justify-content: space-between; /* Places items on left & right */
+  align-items: flex-start;
+  width: 100%;
+  max-width: 2500px; /* Prevents it from stretching too much */
+  gap: 20px;  /* Allow wrapping if necessary */
+}
+
+/* Weather clock container styles */
+.weather-clock-container {
+  flex: 1; /* Allow it to grow and take available space */
+  max-width: 500px;
+  min-width: 800px;
+  background-color: #00ff88da;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgb(119, 119, 119);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.weather-container{
+  margin-top: -50px;
+  
+}
+
+.weather-item  {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.forecast-container h1 {
+  font-size: 2.5rem; /* Larger title font */
+  color: #0051ff; /* Accent color for title */
+}
+
+.forecast-container p {
+  font-size: 2rem; /* Slightly smaller font for details */
+  font-weight: 700;
+}
+
+.forecast-container .temperature {
+  font-size: 3rem; /* Large font for temperature */
+  font-weight: bold;
+  color: #ff5733; /* Warm color for temperature */
+}
+
+.forecast-container .condition {
+  font-size: 1.8rem;
+  font-style: italic;
+  color: #555; /* Subtle color for weather condition */
+}
+
+.forecast-container .icon {
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.forecast-container .time {
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: 20px;
+}
+
+
+/* Departure ticker styles */
+.departure-ticker {
+  flex: 2; /* Allow it to take up available space */
+  min-width: 800px; /* Prevent it from shrinking too much */
+  background-color: #176300da;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  gap: 10px;
+  align-self: flex-start; /* Aligns it with the weather clock */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.departure-ticker-item {
+  display: flex;
+  flex-direction: column;
+  margin-top: -70px;
+}
+
+.departure-item {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.departure-item span {
+  font-weight: bold;
+}
+
+.departure-ticker-item h5 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
