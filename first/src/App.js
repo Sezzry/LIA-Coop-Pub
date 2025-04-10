@@ -30,7 +30,8 @@ const MapComponent = () => {
       .filter(([key]) => key === "solnaBusinessPark")
       .map(([key, { coordinates }]) =>
         axios
-          .get("https://api.open-meteo.com/v1/forecast", {
+        // Enter the Api key for Open weather
+          .get("", {
             params: {
               latitude: coordinates[0],
               longitude: coordinates[1],
@@ -61,7 +62,8 @@ const MapComponent = () => {
   const fetchRealTimeData = useCallback(() => {
     const realTimePromises = Object.entries(locations).map(([key, { resRobotId }]) =>
       axios
-        .get("https://api.resrobot.se/v2.1/departureBoard", {
+        // Enter the api key for resrobot
+        .get("", {
           params: {
             id: resRobotId,
             maxJourneys: 10,
