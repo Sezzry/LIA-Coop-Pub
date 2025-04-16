@@ -90,4 +90,4 @@ Detta projekt är utvecklat för utbildningssyfte. Kontakta mig om du vill anvä
 
 Första Utkast (Fortfarande under utveckling)
 
-![image](https://github.com/user-attachments/assets/7d32a5fa-a33f-48ac-8bfd-6a9dc8d273f1)
+![image](https://github.com/user-attachments/assets/c52c3ee7-b8e6-4f00-beff-31efdd0b3d27)
