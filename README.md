@@ -91,3 +91,8 @@ Detta projekt är utvecklat för utbildningssyfte. Kontakta mig om du vill anvä
 Första Utkast (Fortfarande under utveckling)
 
 ![image](https://github.com/user-attachments/assets/c52c3ee7-b8e6-4f00-beff-31efdd0b3d27)
+
+
+Påsk tema som användes under påsk
+![image](https://github.com/user-attachments/assets/3c4ae484-02ea-4259-98bc-60a4a5ccde66)
+
