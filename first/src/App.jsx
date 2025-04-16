@@ -9,7 +9,7 @@ const MapComponent = () => {
   const [weatherData, setWeatherData] = useState({});
   const [realTimeData, setRealTimeData] = useState([]);
 
-  const apiKey = "ed8fa515-b405-4945-b85b-c3e2ceb156f5";
+  const apiKey = "your api key";
 
   const locations = {
     solnaBusinessPark: {
