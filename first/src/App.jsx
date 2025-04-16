@@ -3,14 +3,13 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "./styling.css";
 import "./FlipClock.css";
-import FlipClock from "./FlipClock.jsx";
+import FlipClock from "./FlipClock.jsx"; 
 
 const MapComponent = () => {
   const [weatherData, setWeatherData] = useState({});
   const [realTimeData, setRealTimeData] = useState([]);
-  
-  // Enter the api key
-  const apiKey = "";
+
+  const apiKey = "ed8fa515-b405-4945-b85b-c3e2ceb156f5";
 
   const locations = {
     solnaBusinessPark: {
@@ -30,8 +29,7 @@ const MapComponent = () => {
       .filter(([key]) => key === "solnaBusinessPark")
       .map(([key, { coordinates }]) =>
         axios
-        // Enter the Api key for Open weather
-          .get("", {
+          .get("https://api.open-meteo.com/v1/forecast", {
             params: {
               latitude: coordinates[0],
               longitude: coordinates[1],
@@ -62,8 +60,7 @@ const MapComponent = () => {
   const fetchRealTimeData = useCallback(() => {
     const realTimePromises = Object.entries(locations).map(([key, { resRobotId }]) =>
       axios
-        // Enter the api key for resrobot
-        .get("", {
+        .get("https://api.resrobot.se/v2.1/departureBoard", {
           params: {
             id: resRobotId,
             maxJourneys: 10,
@@ -107,7 +104,7 @@ const MapComponent = () => {
         const hours = now.getHours();
         const minutes = now.getMinutes();
 
-        if ((hours === 15 && minutes >= 30) || (hours > 15 && hours < 18) || (hours === 17 && minutes <= 10)) {
+        if ((hours === 15 && minutes >= 45) || (hours > 15 && hours < 18) || (hours === 17 && minutes <= 10)) {
           fetchRealTimeData();
         }
       }
@@ -130,7 +127,7 @@ const MapComponent = () => {
     departureDate.setHours(hours, minutes, 0, 0);
 
     const diffInMs = departureDate - now;
-    return Math.max(Math.ceil(diffInMs / (1000 * 60)), 0);
+    return Math.max(Math.floor(diffInMs / (1000 * 60)), 0);
   };
 
   const getUpcomingDepartures = (key) => {
@@ -220,9 +217,9 @@ const MapComponent = () => {
                   <h2>{name}</h2>
                   {weatherData[key] ? (
                     <>
-                      <p>Temperatur: {weatherData[key].current_weather.temperature}°C 🌡️</p>
-                      <p>Vindhastighet: {weatherData[key].current_weather.windspeed} m/s 💨</p>
-                      <p>Nederbörd: {weatherData[key].daily.precipitation_sum[0]} mm ☔</p>
+                      <p>🐤 Temperatur: {weatherData[key].current_weather.temperature}°C 🌡️</p>
+                      <p>🐥 Vindhastighet: {weatherData[key].current_weather.windspeed} m/s 💨</p>
+                      <p>🐣 Nederbörd: {weatherData[key].daily.precipitation_sum[0]} mm ☔</p>
                     </>
                   ) : (
                     <p>Laddar väderdata...</p>
@@ -243,7 +240,7 @@ const MapComponent = () => {
 
                   return (
                     <div key={index} className="daily-weather">
-                      <h1>Väder Prognos</h1>
+                      <h1>🐣 Väder Prognos 🐣</h1>
                       <p>{formattedDayOfWeek} Lägsta {minTemp}° / Högsta {maxTemp}°  Nederbörd: {precipitation} mm</p>
                       <div className="weather-icon"></div>
                     </div>
