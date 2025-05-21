@@ -9,7 +9,7 @@ const MapComponent = () => {
   const [weatherData, setWeatherData] = useState({});
   const [realTimeData, setRealTimeData] = useState([]);
 
-  const apiKey = "your api key";
+  const apiKey = "Your API KEY";
 
   const locations = {
     solnaBusinessPark: {
@@ -29,7 +29,7 @@ const MapComponent = () => {
       .filter(([key]) => key === "solnaBusinessPark")
       .map(([key, { coordinates }]) =>
         axios
-          .get("api key from open weather", {
+          .get("https://api.open-meteo.com/v1/forecast", {
             params: {
               latitude: coordinates[0],
               longitude: coordinates[1],
@@ -60,7 +60,7 @@ const MapComponent = () => {
   const fetchRealTimeData = useCallback(() => {
     const realTimePromises = Object.entries(locations).map(([key, { resRobotId }]) =>
       axios
-        .get("api key from resrobot", {
+        .get("https://api.resrobot.se/v2.1/departureBoard", {
           params: {
             id: resRobotId,
             maxJourneys: 10,
@@ -96,16 +96,40 @@ const MapComponent = () => {
 
   useEffect(() => {
     const fetchAllData = () => {
-      const today = new Date().getDay();
-      if (today >= 1 && today <= 5) {
+      const day = new Date().getDay();
+      if (day >= 1 && day <= 5) {
         fetchWeatherData();
 
         const now = new Date();
         const hours = now.getHours();
         const minutes = now.getMinutes();
 
-        if ((hours === 15 && minutes >= 45) || (hours > 15 && hours < 18) || (hours === 17 && minutes <= 10)) {
+        let shouldRun = false;
+
+        // Check if it's a weekday (Monday to Thursday) 1 = Monday, 5 = Friday
+        if (day >= 1 && day <= 4) {  
+          if ((hours === 12 && minutes >= 30) || (hours === 13 && minutes <= 20)) {
+            shouldRun = true;
+          }
+
+          // Check if it's between 15:30 and 17:10
+          // Adjust the time range as needed
+        if ((hours === 15 && minutes >= 30) || (hours === 17 && minutes <= 10)) { 
+          shouldRun = true;
+          }
+        }
+
+        // Check if it's Friday, friday = 5
+        if (day === 5) {
+          if ((hours === 14 && minutes >= 30) || (hours === 16 && minutes <= 15)) {
+            shouldRun = true;
+          }
+        }
+
+        if (shouldRun) {
           fetchRealTimeData();
+        } else {
+          setRealTimeData({}); // Clear real-time data if not in the specified time range
         }
       }
     };
@@ -217,9 +241,9 @@ const MapComponent = () => {
                   <h2>{name}</h2>
                   {weatherData[key] ? (
                     <>
-                      <p>🐤 Temperatur: {weatherData[key].current_weather.temperature}°C 🌡️</p>
-                      <p>🐥 Vindhastighet: {weatherData[key].current_weather.windspeed} m/s 💨</p>
-                      <p>🐣 Nederbörd: {weatherData[key].daily.precipitation_sum[0]} mm ☔</p>
+                      <p>Temperatur: {weatherData[key].current_weather.temperature}°C 🌡️</p>
+                      <p>Vindhastighet: {weatherData[key].current_weather.windspeed} m/s 💨</p>
+                      <p>Nederbörd: {weatherData[key].daily.precipitation_sum[0]} mm ☔</p>
                     </>
                   ) : (
                     <p>Laddar väderdata...</p>
@@ -240,7 +264,7 @@ const MapComponent = () => {
 
                   return (
                     <div key={index} className="daily-weather">
-                      <h1>🐣 Väder Prognos 🐣</h1>
+                      <h1>Väder Prognos</h1>
                       <p>{formattedDayOfWeek} Lägsta {minTemp}° / Högsta {maxTemp}°  Nederbörd: {precipitation} mm</p>
                       <div className="weather-icon"></div>
                     </div>
