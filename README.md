@@ -96,3 +96,7 @@ Första Utkast (Fortfarande under utveckling)
 Påsk tema som användes under påsk
 ![image](https://github.com/user-attachments/assets/3c4ae484-02ea-4259-98bc-60a4a5ccde66)
 
+Slutresultat vid slutet av LIA perioden
+![Image](https://github.com/user-attachments/assets/7714556b-3574-48ae-ab8b-b86d2474cbf3)
+
+
